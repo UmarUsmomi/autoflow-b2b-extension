@@ -1,0 +1,44 @@
+{
+  "name": "autoflow-b2b-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Commercial Chrome MV3 extension for B2B scraping, autofill, export, and licensing.",
+  "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run build:extension && npm run build:server",
+    "build:extension": "vite build --mode app && vite build --mode content && node scripts/validate-dist.mjs",
+    "build:server": "tsc -p tsconfig.server.json",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "npm run build:extension && vitest run",
+    "test:watch": "vitest",
+    "server": "node server-dist/server/node.js",
+    "package": "npm run build:extension && node scripts/package-extension.mjs && node scripts/validate-package.mjs",
+    "clean": "node scripts/clean.mjs"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.1",
+    "fflate": "^0.8.2",
+    "hono": "^4.9.6",
+    "lucide-react": "^0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/chrome": "^0.0.280",
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^5.0.4",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vitest": "^3.2.4"
+  }
+}
