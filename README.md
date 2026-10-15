@@ -72,7 +72,7 @@ The keyboard shortcuts in the manifest are `Alt+Shift+S` for a scrape and `Alt+S
 The worker uses signed, self-contained keys so the first deployment does not need a database. Production deployments should add durable idempotency records for payment event IDs and a provider signature check before issuing keys.
 
 ```bash
-copy .env.example .env
+cp .env.example .env
 npm run build:server
 npm run server
 ```
