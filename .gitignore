@@ -1,0 +1,12 @@
+node_modules/
+.omo/
+dist/
+server-dist/
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+*.local
+*.zip
