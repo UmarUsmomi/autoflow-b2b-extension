@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "AutoFlow B2B Copilot",
+  "short_name": "AutoFlow",
+  "version": "0.1.0",
+  "description": "Сбор лидов, автозаполнение форм и Pro-лицензия в одной кнопке.",
+  "permissions": ["activeTab", "scripting", "storage", "commands", "sidePanel"],
+  "action": {
+    "default_title": "AutoFlow B2B Copilot",
+    "default_popup": "popup.html"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "scrape-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Собрать данные с текущей страницы"
+    },
+    "autofill-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "Заполнить форму на текущей странице"
+    }
+  }
+}
